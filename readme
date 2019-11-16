@@ -1,0 +1,6 @@
+1) make --> will run `make up`, `make deps`, `make test`
+
+2) `make ssh` to login
+
+3) sudo -i, and then apply content of file KAFKA
+there's no roles for all the shit in this file

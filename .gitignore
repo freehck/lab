@@ -1,0 +1,6 @@
+*~
+.vagrant
+provision/roles/*
+!provision/roles/requirements.yml
+provision/k8s-join-command
+**/#*

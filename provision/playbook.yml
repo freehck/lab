@@ -1,0 +1,36 @@
+---
+
+- hosts: k8s_cluster
+  become: true
+  any_errors_fatal: true
+  roles:
+    - role: freehck.k8s
+      tags:
+        - k8s
+  tasks:
+    - name: create /opt/local-path-provisioner
+      file:
+        path: /opt/local-path-provisioner
+        state: directory
+      tags:
+        - storage
+
+    - name: copy zookeeper-operator manifest
+      template:
+        src: zookeeper-operator.all-ns.yaml
+        dest: /root/zookeeper-operator.all-ns.yaml
+      tags:
+        - zkpr
+        - manifests
+#      when:
+#        - k8s_is_master
+
+    - name: copy kafka manifest
+      template:
+        src: simplekafkacluster.yaml
+        dest: /root/simplekafkacluster.yaml
+      tags:
+        - kafka
+        - manifests
+#      when:
+#        - k8s_is_master
