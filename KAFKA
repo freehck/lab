@@ -39,11 +39,11 @@ kubectl create -f https://raw.githubusercontent.com/pravega/zookeeper-operator/f
 # kubectl create -f https://raw.githubusercontent.com/pravega/zookeeper-operator/fb0a2c4c138928a97eec584ee8745896898b4cdd/deploy/default_ns/operator.yaml
 
 # all namespaces
-# kubectl create -f https://raw.githubusercontent.com/pravega/zookeeper-operator/fb0a2c4c138928a97eec584ee8745896898b4cdd/deploy/all_ns/operator.yaml
+kubectl create -f https://raw.githubusercontent.com/pravega/zookeeper-operator/fb0a2c4c138928a97eec584ee8745896898b4cdd/deploy/all_ns/operator.yaml
 # stopped to work ^^^ because of latest tag update
 # replaced the tag
 
-kubectl apply -f zookeeper-operator.all-ns.yaml
+# kubectl apply -f zookeeper-operator.all-ns.yaml
 
 kubectl apply -f - <<EOF
 apiVersion: "zookeeper.pravega.io/v1beta1"
@@ -51,7 +51,7 @@ kind: "ZookeeperCluster"
 metadata:
   name: "zkpr"
 spec:
-  size: 3
+  replicas: 3
 EOF
 
 
